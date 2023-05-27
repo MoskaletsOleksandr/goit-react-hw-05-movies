@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { ButtonStyled, ButtonLabel } from './Button.styled';
 
-const Button = ({children }) => {
+const Button = ({ children }) => {
   return (
     <ButtonStyled>
       <ButtonLabel>{children}</ButtonLabel>
