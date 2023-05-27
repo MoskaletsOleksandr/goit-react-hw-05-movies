@@ -22,7 +22,7 @@ const options = {
 
 fetch(`https://api.themoviedb.org/3/search/movie?query=${word}&include_adult=false&language=en-US&page=1`, options)
   .then(response => response.json())
-  .then(response => console.log(response.results))
+  .then(response => console.log(response.results, queryWord))
   .catch(err => console.error(err));
   };
 
