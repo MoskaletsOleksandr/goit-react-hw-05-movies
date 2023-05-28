@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { MainMovieInfo } from 'components/MainMovieInfo/MainMovieInfo';
 import { searchMovieDetails } from 'services/themoviedb-api';
@@ -29,17 +29,20 @@ const MovieDetails = () => {
 
   return (
     <>
-    <BackLink to={backLinkHref.current}>Go back</BackLink>
+      <BackLink to={backLinkHref.current}>Go back</BackLink>
       <MainMovieInfo info={movieDetails} />
       <ul>
         <li>
-          <Link to="cast" >Cast</Link>
+          <Link to="cast">Cast</Link>
         </li>
         <li>
-          <Link to="reviews" >Reviews</Link>
+          <Link to="reviews">Reviews</Link>
         </li>
       </ul>
-      <Outlet /></>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
+    </>
   );
 };
 

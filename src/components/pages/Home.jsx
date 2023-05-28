@@ -18,9 +18,7 @@ const Home = () => {
     fetchTrendMovies();
   }, []);
 
-  return (
-      <MoviesList movies={movies} />
-  );
+  return <MoviesList movies={movies} />;
 };
 
 export default Home;

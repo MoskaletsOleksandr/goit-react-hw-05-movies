@@ -32,7 +32,7 @@ const Movies = () => {
 
   return (
     <>
-          <SearchBox onSubmit={updateQueryString} />
+      <SearchBox onSubmit={updateQueryString} />
       <MoviesList movies={movies} />
     </>
   );
