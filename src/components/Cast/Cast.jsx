@@ -30,19 +30,23 @@ const Cast = () => {
 
   return (
     <CastList>
-      {cast.map(character => {
-        const imageUrl = character.profile_path
-          ? `${baseImageUrl}${character.profile_path}`
-          : placeholderImageUrl;
+      {cast.length > 0 ? (
+        cast.map(character => {
+          const imageUrl = character.profile_path
+            ? `${baseImageUrl}${character.profile_path}`
+            : placeholderImageUrl;
 
-        return (
-          <CastItem key={character.credit_id}>
-            <ActorImg src={imageUrl} alt={character.name} />
-            <ActorName>{character.name} as</ActorName>
-            <CharacterName>{character.character}</CharacterName>
-          </CastItem>
-        );
-      })}
+          return (
+            <CastItem key={character.credit_id}>
+              <ActorImg src={imageUrl} alt={character.name} />
+              <ActorName>{character.name} as</ActorName>
+              <CharacterName>{character.character}</CharacterName>
+            </CastItem>
+          );
+        })
+      ) : (
+        <div>No cast available</div>
+      )}
     </CastList>
   );
 };

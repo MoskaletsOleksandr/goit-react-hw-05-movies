@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { MainMovieInfo } from 'components/MainMovieInfo/MainMovieInfo';
 import SectionTitle from 'components/common/SectionTitle/SectionTitle';
@@ -9,7 +9,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const backLinkHref = useRef(location.state?.from ?? '/movies');
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -30,15 +30,15 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <BackLink to={backLinkHref}>Go back</BackLink>
+      <BackLink to={backLinkHref.current}>Go back</BackLink>
       <SectionTitle title="MovieDetails" />
       <MainMovieInfo info={movieDetails} />
       <ul>
         <li>
-          <Link to="cast" state={{from: location.state.from}}>Cast</Link>
+          <Link to="cast" >Cast</Link>
         </li>
         <li>
-          <Link to="reviews" state={{from: location.state.from}}>Reviews</Link>
+          <Link to="reviews" >Reviews</Link>
         </li>
       </ul>
       <Outlet />
