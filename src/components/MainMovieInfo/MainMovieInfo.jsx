@@ -3,8 +3,6 @@ import { MainInfo, MovieGenres, MovieInfo, MovieOverview, MoviePopularity, Movie
 export const MainMovieInfo = ({info}) => {
     const baseImageUrl = 'https://image.tmdb.org/t/p/w500/';
 
-    console.log(info)
-
     return (
     <MainInfo>
         <PosterImage src={`${baseImageUrl}${info.poster_path}`} alt="" />

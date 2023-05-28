@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Form, Input, Icon, Button } from './SearchBox.styled';
+import { Form, Input, Icon } from './SearchBox.styled';
+import Button from 'components/common/Button/Button';
 
 export const SearchBox = ({ value, onSubmit }) => {
   const [queryWord, setQueryWord] = useState('');

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { MainMovieInfo } from 'components/MainMovieInfo/MainMovieInfo';
 import SectionTitle from 'components/common/SectionTitle/SectionTitle';
 import { searchMovieDetails } from 'services/themoviedb-api';
+import Button from '../common/Button/Button';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -27,6 +28,7 @@ const MovieDetails = () => {
 
   return (
     <main>
+      <Button>Go back</Button>
       <SectionTitle title="MovieDetails" />
       <MainMovieInfo info={movieDetails} />
     </main>
