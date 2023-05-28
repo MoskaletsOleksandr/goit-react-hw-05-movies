@@ -1,4 +1,3 @@
-import SectionTitle from 'components/common/SectionTitle/SectionTitle';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { SearchBox } from 'components/SearchBox/SearchBox';
 import { useState, useEffect } from 'react';
@@ -32,11 +31,10 @@ const Movies = () => {
   };
 
   return (
-    <main>
-      <SectionTitle title="Movies" />
-      <SearchBox onSubmit={updateQueryString} />
+    <>
+          <SearchBox onSubmit={updateQueryString} />
       <MoviesList movies={movies} />
-    </main>
+    </>
   );
 };
 

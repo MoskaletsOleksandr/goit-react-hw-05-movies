@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import SectionTitle from 'components/common/SectionTitle/SectionTitle';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { searchTrendMovies } from 'services/themoviedb-api';
 
@@ -20,10 +19,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main>
-      <SectionTitle title="Home" />
       <MoviesList movies={movies} />
-    </main>
   );
 };
 

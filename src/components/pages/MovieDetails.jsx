@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { MainMovieInfo } from 'components/MainMovieInfo/MainMovieInfo';
-import SectionTitle from 'components/common/SectionTitle/SectionTitle';
 import { searchMovieDetails } from 'services/themoviedb-api';
 import BackLink from 'components/common/BackLink/BackLink';
 
@@ -29,9 +28,8 @@ const MovieDetails = () => {
   }
 
   return (
-    <main>
-      <BackLink to={backLinkHref.current}>Go back</BackLink>
-      <SectionTitle title="MovieDetails" />
+    <>
+    <BackLink to={backLinkHref.current}>Go back</BackLink>
       <MainMovieInfo info={movieDetails} />
       <ul>
         <li>
@@ -41,8 +39,7 @@ const MovieDetails = () => {
           <Link to="reviews" >Reviews</Link>
         </li>
       </ul>
-      <Outlet />
-    </main>
+      <Outlet /></>
   );
 };
 
