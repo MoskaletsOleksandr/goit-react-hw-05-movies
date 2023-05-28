@@ -4,10 +4,17 @@ import {
   Container,
   MovieWrapper,
   MovieName,
-  MovieImage, PaginationWrapper, PaginationButton 
+  MovieImage,
+  PaginationWrapper,
+  PaginationButton,
 } from './MoviesList.styled';
 
-export const MoviesList = ({ movies, currentPage, totalPages, onPageChange }) => {
+export const MoviesList = ({
+  movies,
+  currentPage,
+  totalPages,
+  onPageChange,
+}) => {
   const baseImageUrl = 'https://image.tmdb.org/t/p/w500/';
   const placeholderImageUrl = 'https://via.placeholder.com/500x750?text=Movie';
   const location = useLocation();
@@ -37,18 +44,20 @@ export const MoviesList = ({ movies, currentPage, totalPages, onPageChange }) =>
           </MovieWrapper>
         );
       })}
-      {movies.length !== 0 && <PaginationWrapper>
-        {currentPage > 1 && (
-          <PaginationButton onClick={() => handlePageChange(currentPage - 1)}>
-            Previous
-          </PaginationButton>
-        )}
-        {currentPage < totalPages && (
-          <PaginationButton onClick={() => handlePageChange(currentPage + 1)}>
-            Next
-          </PaginationButton>
-        )}
-      </PaginationWrapper>}
+      {movies.length !== 0 && (
+        <PaginationWrapper>
+          {currentPage > 1 && (
+            <PaginationButton onClick={() => handlePageChange(currentPage - 1)}>
+              Previous
+            </PaginationButton>
+          )}
+          {currentPage < totalPages && (
+            <PaginationButton onClick={() => handlePageChange(currentPage + 1)}>
+              Next
+            </PaginationButton>
+          )}
+        </PaginationWrapper>
+      )}
     </Container>
   );
 };

@@ -39,6 +39,7 @@ export const PaginationButton = styled.button`
   color: #333;
   padding: 8px 16px;
   margin: 0 5px;
+  margin-bottom: 15px;
   cursor: pointer;
 
   &:hover {
