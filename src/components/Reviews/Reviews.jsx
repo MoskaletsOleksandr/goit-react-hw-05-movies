@@ -4,13 +4,11 @@ import { searchMovieReviews } from "services/themoviedb-api";
 import { ReviewList, ReviewItem, Author, Content } from "./Reviews.styled";
 
 const Reviews = () => {
-      const [reviews, setReviews] = useState([]);
-    const { movieId } = useParams();
-      const location = useLocation();
+  const [reviews, setReviews] = useState([]);
+  const { movieId } = useParams();
 
-    
-     useEffect(() => {
-    const fetchMovieCast = async () => {
+  useEffect(() => {
+    const fetchMovieReviews = async () => {
       try {
         const data = await searchMovieReviews(movieId);
         setReviews(data.results);
@@ -19,21 +17,23 @@ const Reviews = () => {
       }
     };
 
-         fetchMovieCast();
-     }, [movieId]);
-    
-    return (
-        <ReviewList>
-            {reviews.map((review) => {
-                return (
-                    <ReviewItem key={review.id}>
-                        <Author>Author: {review.author}</Author>
-                        <Content>{review.content}</Content>
-                    </ReviewItem>
-                )
-            })}
-        </ReviewList>
-    )
+    fetchMovieReviews();
+  }, [movieId]);
+
+  return (
+    <ReviewList>
+      {reviews.length > 0 ? (
+        reviews.map((review) => (
+          <ReviewItem key={review.id}>
+            <Author>Author: {review.author}</Author>
+            <Content>{review.content}</Content>
+          </ReviewItem>
+        ))
+      ) : (
+        <ReviewItem>No reviews available.</ReviewItem>
+      )}
+    </ReviewList>
+  );
 };
 
 export default Reviews;
