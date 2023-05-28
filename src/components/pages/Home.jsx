@@ -14,10 +14,10 @@ const Home = () => {
       } catch (error) {
         console.log(error);
       }
-    }
+    };
 
     fetchTrendMovies();
-  }, [])
+  }, []);
 
   return (
     <main>

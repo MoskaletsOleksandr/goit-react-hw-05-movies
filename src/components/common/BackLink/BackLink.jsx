@@ -1,5 +1,5 @@
-import { HiArrowLeft } from "react-icons/hi";
-import { StyledLink } from "./BackLink.styled";
+import { HiArrowLeft } from 'react-icons/hi';
+import { StyledLink } from './BackLink.styled';
 
 const BackLink = ({ to, children }) => {
   return (

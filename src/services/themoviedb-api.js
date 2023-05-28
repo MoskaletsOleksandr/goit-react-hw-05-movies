@@ -61,3 +61,20 @@ export const searchTrendMovies = async () => {
     return [];
   }
 };
+
+export const searchMovieCast = async movieId => {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
+
+  try {
+    const response = await fetch(url, opt);
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch details of movie');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};

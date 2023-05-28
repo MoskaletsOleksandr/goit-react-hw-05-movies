@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { MainMovieInfo } from 'components/MainMovieInfo/MainMovieInfo';
 import SectionTitle from 'components/common/SectionTitle/SectionTitle';
 import { searchMovieDetails } from 'services/themoviedb-api';
-// import Button from '../common/Button/Button';
 import BackLink from 'components/common/BackLink/BackLink';
 
 const MovieDetails = () => {
@@ -32,9 +31,17 @@ const MovieDetails = () => {
   return (
     <main>
       <BackLink to={backLinkHref}>Go back</BackLink>
-      {/* <Button>Go back</Button> */}
       <SectionTitle title="MovieDetails" />
       <MainMovieInfo info={movieDetails} />
+      <ul>
+        <li>
+          <Link to="cast">Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
     </main>
   );
 };

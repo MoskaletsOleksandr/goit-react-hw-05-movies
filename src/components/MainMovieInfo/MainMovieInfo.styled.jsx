@@ -42,4 +42,3 @@ export const MovieOverview = styled.p`
 export const MovieGenres = styled.p`
   font-size: 16px;
 `;
-

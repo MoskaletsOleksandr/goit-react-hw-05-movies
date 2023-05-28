@@ -2,9 +2,7 @@
 import { ButtonStyled } from './Button.styled';
 
 const Button = ({ children }) => {
-  return (
-    <ButtonStyled>{children}</ButtonStyled>
-  );
+  return <ButtonStyled>{children}</ButtonStyled>;
 };
 
 // Button.propTypes = {
