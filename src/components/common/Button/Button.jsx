@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ButtonStyled } from './Button.styled';
 
 const Button = ({ children }) => {
