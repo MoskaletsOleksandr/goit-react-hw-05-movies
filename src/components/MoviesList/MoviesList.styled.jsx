@@ -26,3 +26,27 @@ export const MovieImage = styled.img`
   width: 100%;
   height: auto;
 `;
+
+export const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const PaginationButton = styled.button`
+  border: none;
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ccc;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+`;

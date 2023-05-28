@@ -9,8 +9,8 @@ const opt = {
   },
 };
 
-export const searchMovies = async query => {
-  const url = `${BASE_URL}/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+export const searchMovies = async (query, page) => {
+  const url = `${BASE_URL}/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`;
 
   try {
     const response = await fetch(url, opt);
@@ -20,7 +20,7 @@ export const searchMovies = async query => {
     }
 
     const data = await response.json();
-    return data.results;
+    return data;
   } catch (error) {
     console.error(error);
     return [];
@@ -45,7 +45,7 @@ export const searchMovieDetails = async movieId => {
 };
 
 export const searchTrendMovies = async () => {
-  const url = `${BASE_URL}/trending/movie/day?language=en-US`;
+  const url = `${BASE_URL}/trending/movie/day?language=en-US&`;
 
   try {
     const response = await fetch(url, opt);

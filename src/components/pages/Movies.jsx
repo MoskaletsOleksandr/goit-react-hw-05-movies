@@ -7,7 +7,11 @@ import { searchMovies } from 'services/themoviedb-api';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  // const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const queryWord = searchParams.get('query') ?? '';
+  const currentPage = searchParams.get('page') ?? '';
+  // setSearchParams({...searchParams, page: 1})
 
   useEffect(() => {
     if (queryWord === '') {
@@ -16,24 +20,35 @@ const Movies = () => {
 
     const fetchMovies = async () => {
       try {
-        const results = await searchMovies(queryWord);
-        setMovies(results);
+        const data = await searchMovies(queryWord, currentPage);
+        setMovies(data.results);
+        setTotalPages(data.total_pages);
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchMovies();
-  }, [queryWord]);
+  }, [queryWord, currentPage]);
 
   const updateQueryString = word => {
-    setSearchParams({ query: word });
+    setSearchParams({page: 1, query: word });
   };
+
+  const handlePageChange = page => {
+    setSearchParams({query: queryWord, page: page.toString()});
+  };
+
 
   return (
     <>
       <SearchBox onSubmit={updateQueryString} />
-      <MoviesList movies={movies} />
+      <MoviesList
+        movies={movies}
+        currentPage={Number(currentPage)}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };
