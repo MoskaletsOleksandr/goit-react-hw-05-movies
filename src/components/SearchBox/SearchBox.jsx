@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Form, Input, Icon } from './SearchBox.styled';
 import Button from 'components/common/Button/Button';
 
-export const SearchBox = ({ value, onSubmit }) => {
+export const SearchBox = ({ onSubmit }) => {
   const [queryWord, setQueryWord] = useState('');
 
   const handleChange = ({ target: { value } }) => {
@@ -31,4 +32,8 @@ export const SearchBox = ({ value, onSubmit }) => {
       </Button>
     </Form>
   );
+};
+
+SearchBox.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
