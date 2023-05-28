@@ -21,3 +21,8 @@ export const MovieName = styled.h3`
   margin-bottom: 0;
   color: black;
 `;
+
+export const MovieImage = styled.img`
+  width: 100%;
+  height: auto;
+`;

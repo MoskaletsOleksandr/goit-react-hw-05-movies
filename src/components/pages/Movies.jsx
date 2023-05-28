@@ -1,29 +1,34 @@
 import SectionTitle from 'components/common/SectionTitle/SectionTitle';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { SearchBox } from 'components/SearchBox/SearchBox';
-import { getMovies } from 'dataAPI';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { searchMovies } from 'services/themoviedb-api';
 
 const Movies = () => {
-  const movies = getMovies();
+  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const queryWord = searchParams.get('query') ?? '';
 
+  useEffect(() => {
+    if (queryWord === '') {
+      return;
+    }
+
+    const fetchMovies = async () => {
+      try {
+        const results = await searchMovies(queryWord);
+        setMovies(results);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMovies();
+  }, [queryWord]);
+
   const updateQueryString = word => {
     setSearchParams({ query: word });
-    
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZWVhMTJhYjE5YzRmY2I3M2ZkZmE5N2YwYjk4YjIwZCIsInN1YiI6IjY0NzI0MmFkZGQ3MzFiMDBkZGYwODJkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oRaRBs1ZZwlxBcTzonRfu-pGp99IQkXlU08WAq9fi3k'
-  }
-};
-
-fetch(`https://api.themoviedb.org/3/search/movie?query=${word}&include_adult=false&language=en-US&page=1`, options)
-  .then(response => response.json())
-  .then(response => console.log(response.results, queryWord))
-  .catch(err => console.error(err));
   };
 
   return (
