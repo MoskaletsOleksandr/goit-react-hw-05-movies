@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { searchMovieReviews } from "services/themoviedb-api";
 import { ReviewList, ReviewItem, Author, Content } from "./Reviews.styled";
 
 const Reviews = () => {
       const [reviews, setReviews] = useState([]);
     const { movieId } = useParams();
+      const location = useLocation();
+
     
      useEffect(() => {
     const fetchMovieCast = async () => {
