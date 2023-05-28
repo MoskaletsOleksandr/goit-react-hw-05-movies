@@ -69,7 +69,24 @@ export const searchMovieCast = async movieId => {
     const response = await fetch(url, opt);
 
     if (!response.ok) {
-      throw new Error('Failed to fetch details of movie');
+      throw new Error('Failed to fetch cast');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const searchMovieReviews = async movieId => {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`;
+
+  try {
+    const response = await fetch(url, opt);
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch reviews');
     }
 
     const data = await response.json();

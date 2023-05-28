@@ -5,6 +5,7 @@ import NotFound from 'components/pages/NotFound';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import Cast from 'components/Cast/Cast';
+import Reviews from 'components/Reviews/Reviews';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
