@@ -43,3 +43,21 @@ export const searchMovieDetails = async movieId => {
     console.error(error);
   }
 };
+
+export const searchTrendMovies = async () => {
+  const url = `${BASE_URL}/trending/movie/day?language=en-US`;
+
+  try {
+    const response = await fetch(url, opt);
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch movies');
+    }
+
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
