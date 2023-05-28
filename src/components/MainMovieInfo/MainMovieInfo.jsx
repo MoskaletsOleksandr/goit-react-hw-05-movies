@@ -22,7 +22,7 @@ export const MainMovieInfo = ({ info }) => {
       <PosterImage src={imageUrl} alt="" />
       <MovieInfo>
         <MovieTitle>{info.title}</MovieTitle>
-        <MoviePopularity>Popularity: {info.popularity}%</MoviePopularity>
+        <MoviePopularity>Popularity: {Math.round(info.popularity)}%</MoviePopularity>
         <MovieSectionTitle>Overview</MovieSectionTitle>
         <MovieOverview>{info.overview}</MovieOverview>
         <MovieSectionTitle>Genres</MovieSectionTitle>
